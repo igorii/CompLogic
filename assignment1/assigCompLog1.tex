@@ -1,0 +1,88 @@
+\documentclass[12pt]{article}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{fancybox}
+\usepackage{fancyvrb}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{epsfig}
+\usepackage{color}
+\usepackage{multicol}
+\usepackage{hhline}
+\usepackage{xspace,epic,eepic,graphicx}
+\usepackage{latexsym}
+
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+{fontsize=\footnotesize,
+ %
+ frame=lines,  % top and bottom rule only
+ framesep=2em, % separation between frame and text
+ rulecolor=\color{Gray},
+ label=\fbox{\color{Black}data.txt},
+ labelposition=topline,
+}
+
+\newcommand{\mc}[1]{\mathcal{ #1}}
+\newcommand{\e}[1]{\emph{#1}}
+\newcommand{\ignore}[1]{}
+\newcommand{\boxtheorem}{\hfill $\Box$\\}
+\newcommand{\nit}[1]{{\it #1}}
+
+\begin{document}
+\thispagestyle{empty}
+
+\vspace*{-3.5cm}
+\begin{center} \bf \large COMP 4900C~ Computational Logic and Automated Reasoning\\ Winter 2015~~ Assignment I
+\end{center}
+
+{\small \noindent {Timothy Thornton}\\
+{\small \noindent {100822254}\\
+{\small \noindent {tim.thornton@cmail.carleton.ca}\\
+
+{\small \noindent {\bf Question 0}\\
+
+\noindent 0. \ Install ``Prover 9" and Latex in your computer. In your solutions include the code and run for/of whichever system is used. For this, the ``verbatim" Latex environment is
+useful. 
+\\
+
+Version information reported by Prover9:
+
+\begin{verbatim}
+Prover9 (32) version Oct-2007, Oct 2007.
+\end{verbatim}
+
+{\small \noindent {\bf Question 1}\\
+
+\noindent 1. \ (lecture 1, slide 17) \ Rerun in Prover 9 the superman example.\\
+
+The following code represents the Superman example. The atomic constants have been renamed to avoid interpretation as variables.
+
+\VerbatimInput[label=superman.in]{sources/superman.in}
+
+Output of the above input:
+
+\VerbatimInput[label=superman.out]{sources/superman.out}
+
+\newpage
+2. \ (lecture 3, slide 41) \ Rerun in Prover 9 the group example.\\
+
+The following code represents the Group example.
+
+\VerbatimInput[label=group.in]{sources/group.in}
+
+Output of the above input:
+
+\VerbatimInput[label=group.out]{sources/group.out}
+
+\newpage
+3. \ (lecture 2, slide 33. \ Prove with Prover 9 the theorem about Boolean algebras.\\
+
+The following code proves idempotency of Boolean algebras.
+
+\VerbatimInput[label=boolean.in]{sources/boolean.in}
+
+Output of the above input:
+
+\VerbatimInput[label=boolean.out]{sources/boolean.out}
+
+\end{document}

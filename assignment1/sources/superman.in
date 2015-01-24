@@ -1,0 +1,24 @@
+%%% Superman
+
+%%  Atomic constants
+%     a = Superman is able to prevent evil
+%     b = Superman is willing to prevent evil
+%     c = Superman prevents evil
+%     d = Superman is impotent
+%     e = Superman is malevolent
+%     f = Superman exists
+
+formulas(usable).
+
+(a & b) -> c.
+(-a -> d) & (-b -> e).
+-c.
+f -> (-d & -e).
+
+end_of_list.
+
+formulas(sos).
+
+f.
+
+end_of_list.

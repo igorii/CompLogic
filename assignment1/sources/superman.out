@@ -1,0 +1,119 @@
+============================== Prover9 ===============================
+Prover9 (32) version Oct-2007, Oct 2007.
+Process 976 was started by Tim on abyss,
+Fri Jan 23 22:15:37 2015
+The command was "prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(usable).
+a & b -> c.
+(-a -> d) & (-b -> e).
+-c.
+f -> -d & -e.
+end_of_list.
+
+formulas(sos).
+f.
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 a & b -> c # label(non_clause).  [assumption].
+2 (-a -> d) & (-b -> e) # label(non_clause).  [assumption].
+3 f -> -d & -e # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+-a | -b | c.  [clausify(1)].
+a | d.  [clausify(2)].
+b | e.  [clausify(2)].
+-c.  [assumption].
+-f | -d.  [clausify(3)].
+-f | -e.  [clausify(3)].
+end_of_list.
+
+formulas(sos).
+f.  [assumption].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ a, b, c, d, e, f ]).
+Function symbol precedence:  function_order([ ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(positive_inference). % (non-Horn)
+    % set(positive_inference) -> assign(literal_selection, max_negative).
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(back_unit_deletion).  % (non-Horn)
+    % set(back_unit_deletion) -> set(unit_deletion).
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.05) seconds.
+% Length of proof is 15.
+% Level of proof is 4.
+% Maximum clause weight is 1.
+% Given clauses 0.
+
+1 a & b -> c # label(non_clause).  [assumption].
+2 (-a -> d) & (-b -> e) # label(non_clause).  [assumption].
+3 f -> -d & -e # label(non_clause).  [assumption].
+4 -a | -b | c.  [clausify(1)].
+5 a | d.  [clausify(2)].
+6 b | e.  [clausify(2)].
+7 -c.  [assumption].
+8 -f | -d.  [clausify(3)].
+9 -f | -e.  [clausify(3)].
+10 f.  [assumption].
+11 -e.  [back_unit_del(9),unit_del(a,10)].
+12 -d.  [back_unit_del(8),unit_del(a,10)].
+13 b.  [back_unit_del(6),unit_del(b,11)].
+14 a.  [back_unit_del(5),unit_del(b,12)].
+15 $F.  [back_unit_del(4),unit_del(a,14),unit_del(b,13),unit_del(c,7)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=6. Kept=5. proofs=1.
+Usable=1. Sos=3. Demods=0. Limbo=2, Disabled=6. Hints=0.
+Weight_deleted=0. Literals_deleted=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=5.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.01.
+User_CPU=0.00, System_CPU=0.05, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 976 exit (max_proofs) Fri Jan 23 22:15:37 2015

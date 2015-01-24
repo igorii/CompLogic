@@ -1,0 +1,168 @@
+============================== Prover9 ===============================
+Prover9 (32) version Oct-2007, Oct 2007.
+Process 7620 was started by Tim on abyss,
+Fri Jan 23 22:16:40 2015
+The command was "prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(usable).
+(all x all y all z o(o(x,y),z) = o(x,o(y,z))).
+(all x o(x,e) = x).
+(all x exists y o(x,y) = e).
+end_of_list.
+
+formulas(sos).
+-((all x o(x,x) = e) -> (all x all y o(x,y) = o(y,x))).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 -((all x o(x,x) = e) -> (all x all y o(x,y) = o(y,x))) # label(non_clause).  [assumption].
+2 (all x all y all z o(o(x,y),z) = o(x,o(y,z))) # label(non_clause).  [assumption].
+3 (all x o(x,e) = x) # label(non_clause).  [assumption].
+4 (all x exists y o(x,y) = e) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+o(o(x,y),z) = o(x,o(y,z)).  [clausify(2)].
+o(x,e) = x.  [clausify(3)].
+o(x,f1(x)) = e.  [clausify(4)].
+end_of_list.
+
+formulas(sos).
+o(x,x) = e.  [clausify(1)].
+o(c2,c1) != o(c1,c2).  [clausify(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ e, c1, c2, o, f1 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+    % set(paramodulation) -> set(back_demod).
+
+Auto_process settings:  (no changes).
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+5 o(o(x,y),z) = o(x,o(y,z)).  [clausify(2)].
+6 o(x,e) = x.  [clausify(3)].
+7 o(x,f1(x)) = e.  [clausify(4)].
+end_of_list.
+
+formulas(sos).
+8 o(x,x) = e.  [clausify(1)].
+9 o(c2,c1) != o(c1,c2).  [clausify(1)].
+end_of_list.
+
+formulas(demodulators).
+8 o(x,x) = e.  [clausify(1)].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=5): 8 o(x,x) = e.  [clausify(1)].
+
+given #2 (I,wt=7): 9 o(c2,c1) != o(c1,c2).  [clausify(1)].
+
+given #3 (A,wt=9): 10 o(e,x) = o(y,o(y,x)).  [para(8(a,1),5(a,1,1))].
+
+given #4 (T,wt=7): 21 o(x,o(x,e)) = e.  [para(10(a,1),6(a,1))].
+
+given #5 (T,wt=7): 24 o(e,x) = o(x,e).  [para(8(a,1),10(a,2,2))].
+
+given #6 (T,wt=5): 35 o(e,x) = x.  [para(24(a,2),6(a,1))].
+
+given #7 (T,wt=6): 42 f1(x) = o(x,e).  [back_rewrite(23),rewrite([35(3)])].
+
+given #8 (A,wt=9): 11 o(x,o(y,o(x,y))) = e.  [para(8(a,1),5(a,1)),flip(a)].
+
+given #9 (T,wt=7): 38 o(x,o(x,y)) = y.  [back_rewrite(29),rewrite([32(3),35(3),35(4)])].
+
+given #10 (T,wt=9): 12 o(o(x,y),y) = o(x,e).  [para(8(a,1),5(a,2,2))].
+
+given #11 (T,wt=7): 54 o(o(x,y),x) = y.  [para(12(a,1),38(a,1,2)),rewrite([40(4)])].
+
+% Operation o is commutative; C redundancy checks enabled.
+
+============================== PROOF =================================
+
+% Proof 1 at 0.01 (+ 0.00) seconds.
+% Length of proof is 20.
+% Level of proof is 9.
+% Maximum clause weight is 11.
+% Given clauses 11.
+
+1 -((all x o(x,x) = e) -> (all x all y o(x,y) = o(y,x))) # label(non_clause).  [assumption].
+2 (all x all y all z o(o(x,y),z) = o(x,o(y,z))) # label(non_clause).  [assumption].
+3 (all x o(x,e) = x) # label(non_clause).  [assumption].
+5 o(o(x,y),z) = o(x,o(y,z)).  [clausify(2)].
+6 o(x,e) = x.  [clausify(3)].
+8 o(x,x) = e.  [clausify(1)].
+9 o(c2,c1) != o(c1,c2).  [clausify(1)].
+10 o(e,x) = o(y,o(y,x)).  [para(8(a,1),5(a,1,1))].
+12 o(o(x,y),y) = o(x,e).  [para(8(a,1),5(a,2,2))].
+21 o(x,o(x,e)) = e.  [para(10(a,1),6(a,1))].
+24 o(e,x) = o(x,e).  [para(8(a,1),10(a,2,2))].
+29 o(x,o(o(x,e),y)) = o(e,y).  [para(21(a,1),5(a,1,1)),flip(a)].
+32 o(o(x,e),y) = o(e,o(x,y)).  [para(24(a,1),5(a,1,1))].
+33 o(e,o(x,y)) = o(x,o(y,e)).  [para(24(a,1),5(a,2,2)),rewrite([32(3)])].
+35 o(e,x) = x.  [para(24(a,2),6(a,1))].
+38 o(x,o(x,y)) = y.  [back_rewrite(29),rewrite([32(3),35(3),35(4)])].
+40 o(x,o(y,e)) = o(x,y).  [back_rewrite(33),rewrite([35(3)]),flip(a)].
+54 o(o(x,y),x) = y.  [para(12(a,1),38(a,1,2)),rewrite([40(4)])].
+59 o(x,y) = o(y,x).  [para(38(a,1),54(a,1,1))].
+60 $F.  [resolve(59,a,9,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=11. Generated=167. Kept=52. proofs=1.
+Usable=10. Sos=14. Demods=24. Limbo=4, Disabled=28. Hints=0.
+Weight_deleted=0. Literals_deleted=0.
+Forward_subsumed=115. Back_subsumed=2.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=43 (3 lex), Back_demodulated=24. Back_unit_deleted=0.
+Demod_attempts=1047. Demod_rewrites=169.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.05.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 7620 exit (max_proofs) Fri Jan 23 22:16:40 2015

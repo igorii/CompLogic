@@ -1,0 +1,20 @@
+%%% Group Theory
+
+formulas(usable).
+
+% Associativity
+all x all y all z (o(o(x, y),z)=o(x,o(y,z))).
+
+% Neutral element
+all x (o(x,e)=x).
+
+% Inverse elements
+all x exists y (o(x,y)=e).
+
+end_of_list.
+
+formulas(sos).
+
+-((all x (o(x,x)=e)) -> (all x all y (o(x,y)=o(y,x)))).
+
+end_of_list.

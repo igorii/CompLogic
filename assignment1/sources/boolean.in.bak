@@ -1,0 +1,35 @@
+%%% Boolean Algebras
+%%
+%       a = e0
+%       b = e1
+
+formulas(usable).
+
+% Commutativity
+all x all y inter(x, y) = inter(y, x).
+all x all y union(x, y) = union(y, x).
+
+% Associativity
+all x all y all z union(union(x, y), z) = union(x, union(y, z)).
+all x all y all z inter(inter(x, y), z) = inter(x, inter(y, z)).
+
+% Distributivity
+all x all y all z union(x, inter(y, z)) = inter(union(x, y), union(x, z)).
+all x all y all z inter(x, union(y, z)) = union(inter(x, y), inter(x, z)).
+
+% Neutral elements
+all x union(x, a) = x.
+all x inter(x, b) = x.
+
+% Complement
+all x exists y union(x, y) = b.
+all x exists y inter(x, y) = a.
+
+end_of_list.
+
+formulas(sos).
+
+% Idempotency
+-(all x union(x, x) = x).
+
+end_of_list.

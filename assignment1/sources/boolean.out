@@ -1,0 +1,140 @@
+============================== Prover9 ===============================
+Prover9 (32) version Oct-2007, Oct 2007.
+Process 8624 was started by Tim on abyss,
+Fri Jan 23 23:27:16 2015
+The command was "prover9".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(usable).
+(all x all y i(x,y) = i(y,x)).
+(all x all y u(x,y) = u(y,x)).
+(all x all y all z u(u(x,y),z) = u(x,u(y,z))).
+(all x all y all z i(i(x,y),z) = i(x,i(y,z))).
+(all x all y all z u(x,i(y,z)) = i(u(x,y),u(x,z))).
+(all x all y all z i(x,u(y,z)) = u(i(x,y),i(x,z))).
+(all x u(x,0) = x).
+(all x i(x,1) = x).
+(all x exists y u(x,y) = 1).
+(all x exists y i(x,y) = 0).
+end_of_list.
+
+formulas(sos).
+-(all x u(x,x) = x).
+end_of_list.
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 -(all x u(x,x) = x) # label(non_clause).  [assumption].
+2 (all x all y i(x,y) = i(y,x)) # label(non_clause).  [assumption].
+3 (all x all y u(x,y) = u(y,x)) # label(non_clause).  [assumption].
+4 (all x all y all z u(u(x,y),z) = u(x,u(y,z))) # label(non_clause).  [assumption].
+5 (all x all y all z i(i(x,y),z) = i(x,i(y,z))) # label(non_clause).  [assumption].
+6 (all x all y all z u(x,i(y,z)) = i(u(x,y),u(x,z))) # label(non_clause).  [assumption].
+7 (all x all y all z i(x,u(y,z)) = u(i(x,y),i(x,z))) # label(non_clause).  [assumption].
+8 (all x u(x,0) = x) # label(non_clause).  [assumption].
+9 (all x i(x,1) = x) # label(non_clause).  [assumption].
+10 (all x exists y u(x,y) = 1) # label(non_clause).  [assumption].
+11 (all x exists y i(x,y) = 0) # label(non_clause).  [assumption].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+i(x,y) = i(y,x).  [clausify(2)].
+u(x,y) = u(y,x).  [clausify(3)].
+u(u(x,y),z) = u(x,u(y,z)).  [clausify(4)].
+i(i(x,y),z) = i(x,i(y,z)).  [clausify(5)].
+u(x,i(y,z)) = i(u(x,y),u(x,z)).  [clausify(6)].
+u(i(x,y),i(x,z)) = i(x,u(y,z)).  [clausify(7)].
+u(x,0) = x.  [clausify(8)].
+i(x,1) = x.  [clausify(9)].
+u(x,f1(x)) = 1.  [clausify(10)].
+i(x,f2(x)) = 0.  [clausify(11)].
+end_of_list.
+
+formulas(sos).
+u(c1,c1) != c1.  [clausify(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ 0, 1, c1, i, u, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+    % set(paramodulation) -> set(back_demod).
+
+Auto_process settings:  (no changes).
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+12 i(x,y) = i(y,x).  [clausify(2)].
+13 u(x,y) = u(y,x).  [clausify(3)].
+14 u(u(x,y),z) = u(x,u(y,z)).  [clausify(4)].
+15 i(i(x,y),z) = i(x,i(y,z)).  [clausify(5)].
+16 u(x,i(y,z)) = i(u(x,y),u(x,z)).  [clausify(6)].
+17 u(i(x,y),i(x,z)) = i(x,u(y,z)).  [clausify(7)].
+18 u(x,0) = x.  [clausify(8)].
+19 i(x,1) = x.  [clausify(9)].
+20 u(x,f1(x)) = 1.  [clausify(10)].
+21 i(x,f2(x)) = 0.  [clausify(11)].
+end_of_list.
+
+formulas(sos).
+22 u(c1,c1) != c1.  [clausify(1)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=5): 22 u(c1,c1) != c1.  [clausify(1)].
+
+============================== STATISTICS ============================
+
+Given=1. Generated=2. Kept=1. proofs=0.
+Usable=11. Sos=0. Demods=0. Limbo=0, Disabled=1. Hints=0.
+Weight_deleted=0. Literals_deleted=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.03.
+User_CPU=0.00, System_CPU=0.03, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 8624 exit (sos_empty) Fri Jan 23 23:27:16 2015
